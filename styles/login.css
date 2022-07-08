@@ -1,6 +1,18 @@
-.containter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+html, body {
+    margin: 0;  
+    padding: 0;  
+    background-color:#6abadeba;  
+    font-family: 'Arial';
     text-align: center;
 }
+
+.login-container {
+    width: 382px;  
+    overflow: hidden;  
+    margin: auto;  
+    margin: 20 0 0 450px;  
+    padding: 80px;  
+    background: purple;  
+    border-radius: 15px ;  
+}
+
