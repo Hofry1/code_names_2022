@@ -1,0 +1,7 @@
+.h1style {
+    font-style: italic;
+    text-align: center;
+    font-size: 40px;
+    color: rgb(255, 136, 0);
+    text-shadow: 1px 1px 1px #000;
+}
