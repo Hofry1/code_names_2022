@@ -5,16 +5,22 @@ html, body {
 }
 
 .grid-container {
+    color: white;
+    margin: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 75px 75px 75px 75px 75px;
+    gap: 20px;
+    text-align: center;
 }
 
-
 .grid-item {
-    background-color: aqua;
+    background: #0b1e33;
     border: 1px solid black;
-    text-align: center;
-    font-size: 30px;
+    border-radius: 5px;
+    font-size: 150%;
+    line-height: 75px;
+    cursor: pointer;
 }
 
 .headstyle {
