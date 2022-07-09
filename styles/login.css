@@ -1,18 +1,32 @@
 html, body {
     margin: 0;  
     padding: 0;  
-    background-color:#6abadeba;  
-    font-family: 'Arial';
     text-align: center;
+    font-size: 25px;
+    color: white;
 }
 
 .login-container {
+    height: 200px;
+    border: 2px solid #006100;
     width: 382px;  
     overflow: hidden;  
-    margin: auto;  
-    margin: 20 0 0 450px;  
+    margin: 200px auto;  
     padding: 80px;  
-    background: purple;  
-    border-radius: 15px ;  
+    background: #0b1e33;  
+    border-radius: 15px;  
+}
+
+input[type=submit] {
+    cursor: pointer;
+    font-size: 25px;
+    display: block;
+    color: #0b1e33;;
+    background: white;
+    border-radius: 10px;
+    height: 60px;
+    width: 100px;
+    margin-top: 20px;
+    margin-left: 150px;
 }
 
