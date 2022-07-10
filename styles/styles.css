@@ -13,7 +13,7 @@ html, body {
     text-align: center;
 }
 
-button {
+.grid-container > div {
     border: 1px solid black;
     border-radius: 5px;
     font-size: 150%;
@@ -36,4 +36,10 @@ button {
     border: 1px solid black;
     border-radius: 10px;
     background-color: red;
+}
+
+#spymaster-button {
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
 }
