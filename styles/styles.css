@@ -5,7 +5,6 @@ html, body {
 }
 
 .grid-container {
-    color: white;
     margin: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -14,8 +13,7 @@ html, body {
     text-align: center;
 }
 
-.grid-item {
-    background: #0b1e33;
+button {
     border: 1px solid black;
     border-radius: 5px;
     font-size: 150%;
@@ -29,4 +27,13 @@ html, body {
     font-size: 40px;
     color: rgb(255, 136, 0);
     text-shadow: 1px 1px 1px #000;
+}
+
+.team {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: red;
 }
