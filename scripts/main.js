@@ -25,6 +25,10 @@ function wordsAssignment() {
 
 }
 
+function newGame() {
+    
+}
+
 let activeSpymaster = 0;
 const cardsNum = 25;
 const redNum = 9;
