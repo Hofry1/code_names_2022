@@ -4,7 +4,7 @@ function init() {
         cards[i].classList.add(colorBoard[i]);
         cards[i].onclick = cardClick;
     }
-    startTimer(10, display);
+    startTimer();
 }
 
 function cardClick(evt) {
@@ -12,7 +12,7 @@ function cardClick(evt) {
         return;
     if (cards[evt.target.id].classList[1] != "shown") {
         clearInterval(myInterval);
-        startTimer(10, display);
+        startTimer();
         if (playingTeam == "r") {
             if (colorBoard[evt.target.id] == "r") {
                 cards[evt.target.id].classList.add("shown");
@@ -90,8 +90,8 @@ function newGame() {
     
 }
 
-function startTimer(duration, display) {
-    var timer = duration;
+function startTimer() {
+    var timer = 60;
     window.myInterval = setInterval(function () {
         display.innerHTML = timer;
         if (--timer < 0) {
@@ -105,8 +105,14 @@ function endGame(winner) {
     clearInterval(myInterval);
     for (let i = 0; i < cardsNum; i++) {
         cards[i].onclick = "";
-        teamTurn.innerHTML = `Победитель: ${winner == "r" ? "Красные" : "Синие"}`
     }
+    if (winner == "r") {
+        teamTurn.innerHTML = "Победитель: Красные";
+        team.style.background = "red";
+        return;
+    }
+    teamTurn.innerHTML = "Победитель: Синие";
+    team.style.background = "blue";
 }
 
 function flipTurn() {

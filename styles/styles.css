@@ -1,7 +1,7 @@
 html, body {
     text-align: center;
     color: white;
-    background: #0b1e33;
+    background: #121212;
     font-family: "Arial";
 }
 
@@ -25,16 +25,15 @@ html, body {
 }
 
 .grid-container > div {
-    border: 1px solid white;
+    background: #616E7C;
     border-radius: 5px;
     font-size: 150%;
     line-height: 75px;
     cursor: pointer;
 }
 
-.headstyle {
+h1 {
     font-size: 40px;
-    color: rgb(255, 136, 0);
 }
 
 .team {
@@ -51,6 +50,7 @@ html, body {
     cursor: pointer;
     border: 1px solid white;
     border-radius: 10px;
+    line-height: 20px;
     width: 10%;
     margin: auto;
     height: 45px;
@@ -88,20 +88,14 @@ html, body {
     background: yellow;
 }
 
-#red-score {
-    color: red;
-}
-
-#blue-score {
-    color: blue;
-}
-
 .red-cards {
+    color: red;
     border: 2px solid red;
     border-radius: 20px;
 }
 
 .blue-cards {
+    color: blue;
     border: 2px solid blue;
     border-radius: 20px;
 }
