@@ -1,15 +1,18 @@
 function init() {
+    const data = await fetchCards();
+    wordBoard = data.word;
+    colorBoard = data.color;
     for (let i = 0; i < cardsNum; i++) {
+        cards[i].onclick = cardClick;
         cards[i].innerHTML = wordBoard[i];
         cards[i].classList.add(colorBoard[i]);
-        cards[i].onclick = cardClick;
     }
     startTimer();
 }
 
 async function fetchCards() {
-    let response = await fetch('http://localhost:8088/cards');
-    return await response.json();
+    return fetch('http://localhost:8080/cards')
+    .then(response => response.json());
 }
 
 function cardClick(evt) {
@@ -131,6 +134,8 @@ function flipTurn() {
     team.style.background = "red";
 }
 
+let colorBoard = [];
+let wordBoard = [];
 let activeSpymaster = 0;
 const cardsNum = 25;
 let redNum = 9;
@@ -145,7 +150,4 @@ const redScore = document.getElementById("red-score");
 const blueScore = document.getElementById("blue-score");
 const display = document.getElementById('timer');
 spymaster.addEventListener('click', showSpymaster);
-let data = fetchCards();
-let wordBoard = data.word;
-let colorBoard = data.color;
 init();
