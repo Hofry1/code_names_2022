@@ -1,10 +1,18 @@
 function init() {
+    let data = fetchCards();
+    let wordBoard = data.word;
+    let colorBoard = data.color;
     for (let i = 0; i < cardsNum; i++) {
         cards[i].innerHTML = wordBoard[i];
         cards[i].classList.add(colorBoard[i]);
         cards[i].onclick = cardClick;
     }
     startTimer();
+}
+
+async function fetchCards() {
+    let response = await fetch('/cards');
+    return await response.json();
 }
 
 function cardClick(evt) {
@@ -95,7 +103,7 @@ function startTimer() {
         display.innerHTML = timer;
         if (--timer < 0) {
             flipTurn();
-            timer = 60;
+            timer = duration;
         }
     }, 1000);
 }
@@ -125,9 +133,6 @@ function flipTurn() {
     teamTurn.innerHTML = "Ход красных";
     team.style.background = "red";
 }
-
-const colorBoard = ["r", "r", "b", "r", "n", "r", "a", "r", "r", "r", "b", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r"];
-const wordBoard = ["hi", "", "", "asdf", "", "", "", "", "", "hi", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 
 let activeSpymaster = 0;
 const cardsNum = 25;
