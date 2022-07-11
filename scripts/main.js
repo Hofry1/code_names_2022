@@ -4,20 +4,21 @@ function init() {
         cards[i].classList.add(colorBoard[i]);
         cards[i].onclick = cardClick;
     }
+    startTimer(10, display);
 }
 
 function cardClick(evt) {
-    if (activeSpymaster == 1) {
+    if (activeSpymaster == 1)
         return;
-    }
     if (playingTeam == "r") {
+        clearInterval(myInterval);
+        startTimer(10, display);
         if (colorBoard[evt.target.id] == "r") {
             cards[evt.target.id].classList.add("shown");
             redNum--;
             redScore.innerHTML = `Осталось красных: ${redNum}`;
-            if (redNum == 0) {
+            if (redNum == 0)
                 endGame("r");
-            }
             return;
         }
         if (colorBoard[evt.target.id] == "b") {
@@ -41,13 +42,14 @@ function cardClick(evt) {
             return;
         }
     }
+    clearInterval(myInterval);
+    startTimer(10, display);
     if (colorBoard[evt.target.id] == "r") {
         cards[evt.target.id].classList.add("shown");
         redNum--;
         redScore.innerHTML = `Осталось красных: ${redNum}`;
-        if (redNum == 0) {
+        if (redNum == 0)
             endGame("r");
-        }
         flipTurn();
         return;
     }
@@ -55,9 +57,8 @@ function cardClick(evt) {
         cards[evt.target.id].classList.add("shown");
         blueNum--;
         blueScore.innerHTML = `Осталось синих: ${blueNum}`;
-        if (blueNum == 0) {
+        if (blueNum == 0)
             endGame("b");
-        }
         return;
     }
     if (colorBoard[evt.target.id] == "n") {
@@ -77,23 +78,33 @@ function showSpymaster() {
     if (activeSpymaster == 0) {
         spymaster.innerHTML = "Показать игровую доску";
         activeSpymaster = 1;
-        for (let i = 0; i < cardsNum; i++) {
+        for (let i = 0; i < cardsNum; i++)
             cards[i].classList.add("spymaster");
-        }
         return;
     }
     spymaster.innerHTML = "Доска спаймастера";
     activeSpymaster = 0;
-    for (let i = 0; i < cardsNum; i++) {
+    for (let i = 0; i < cardsNum; i++)
         cards[i].classList.remove("spymaster");
-    }
 }
 
 function newGame() {
     
 }
 
+function startTimer(duration, display) {
+    var timer = duration;
+    window.myInterval = setInterval(function () {
+        display.innerHTML = timer;
+        if (--timer < 0) {
+            flipTurn();
+            timer = duration;
+        }
+    }, 1000);
+}
+
 function endGame(winner) {
+    clearInterval(myInterval);
     for (let i = 0; i < cardsNum; i++) {
         cards[i].onclick = "";
         teamTurn.innerHTML = `Победитель: ${winner == "r" ? "Красные" : "Синие"}`
@@ -127,6 +138,7 @@ const team = document.getElementsByClassName("team")[0];
 const teamTurn = document.getElementById("team-turn");
 const redScore = document.getElementById("red-score");
 const blueScore = document.getElementById("blue-score");
+const display = document.getElementById('timer');
 spymaster.addEventListener('click', showSpymaster);
 
 init();

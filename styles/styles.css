@@ -2,6 +2,7 @@ html, body {
     text-align: center;
     color: white;
     background: #0b1e33;
+    font-family: "Arial";
 }
 
 .blue-cards, .team, .red-cards {
@@ -21,7 +22,7 @@ html, body {
 }
 
 .grid-container > div {
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 5px;
     font-size: 150%;
     line-height: 75px;
@@ -81,4 +82,22 @@ html, body {
 
 .n.shown {
     background: yellow;
+}
+
+#red-score {
+    color: red;
+}
+
+#blue-score {
+    color: blue;
+}
+
+.red-cards {
+    border: 2px solid red;
+    border-radius: 20px;
+}
+
+.blue-cards {
+    border: 2px solid blue;
+    border-radius: 20px;
 }
