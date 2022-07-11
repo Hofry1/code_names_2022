@@ -1,7 +1,4 @@
 function init() {
-    let data = fetchCards();
-    let wordBoard = data.word;
-    let colorBoard = data.color;
     for (let i = 0; i < cardsNum; i++) {
         cards[i].innerHTML = wordBoard[i];
         cards[i].classList.add(colorBoard[i]);
@@ -11,7 +8,7 @@ function init() {
 }
 
 async function fetchCards() {
-    let response = await fetch('/cards');
+    let response = await fetch('http://localhost:8088/cards');
     return await response.json();
 }
 
@@ -148,5 +145,7 @@ const redScore = document.getElementById("red-score");
 const blueScore = document.getElementById("blue-score");
 const display = document.getElementById('timer');
 spymaster.addEventListener('click', showSpymaster);
-
+let data = fetchCards();
+let wordBoard = data.word;
+let colorBoard = data.color;
 init();
