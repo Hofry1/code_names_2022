@@ -95,7 +95,7 @@ function startTimer() {
         display.innerHTML = timer;
         if (--timer < 0) {
             flipTurn();
-            timer = duration;
+            timer = 60;
         }
     }, 1000);
 }

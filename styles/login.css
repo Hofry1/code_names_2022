@@ -38,3 +38,7 @@ div {
     width: 500px !important;
     margin: 50px !important;
 }
+
+#login-link {
+    font-size: 200%;
+}
