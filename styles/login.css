@@ -17,6 +17,10 @@ html, body {
     border-radius: 15px;  
 }
 
+.team {
+    padding: 50px;
+}
+
 div {
     cursor: pointer;
     font-size: 25px;

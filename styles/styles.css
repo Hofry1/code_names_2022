@@ -1,5 +1,7 @@
 html, body {
     text-align: center;
+    color: white;
+    background: #0b1e33;
 }
 
 .blue-cards, .team, .red-cards {
@@ -47,4 +49,32 @@ html, body {
     width: 10%;
     margin: auto;
     height: 45px;
+}
+
+.n {
+    background: yellow;
+}
+
+.r.spymaster {
+    background: red !important;
+}
+
+.b.spymaster {
+    background: blue !important;
+}
+
+.a.spymaster {
+    background: black !important;
+}
+
+.r.shown {
+    background: red !important;
+}
+
+.b.shown {
+    background: blue !important;
+}
+
+.a.shown {
+    background: black !important;
 }
