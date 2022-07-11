@@ -26,10 +26,9 @@ function cardClick(evt) {
                 cards[evt.target.id].classList.add("shown");
                 blueNum--;
                 blueScore.innerHTML = `Осталось синих: ${blueNum}`;
-                if (blueNum == 0) {
-                    endGame("b");
-                }
                 flipTurn();
+                if (blueNum == 0)
+                    endGame("b");
                 return;
             }
             if (colorBoard[evt.target.id] == "n") {
@@ -47,9 +46,9 @@ function cardClick(evt) {
             cards[evt.target.id].classList.add("shown");
             redNum--;
             redScore.innerHTML = `Осталось красных: ${redNum}`;
+            flipTurn();
             if (redNum == 0)
                 endGame("r");
-            flipTurn();
             return;
         }
         if (colorBoard[evt.target.id] == "b") {
