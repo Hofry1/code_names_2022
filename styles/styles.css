@@ -5,11 +5,15 @@ html, body {
     font-family: "Arial";
 }
 
-.blue-cards, .team, .red-cards {
-    display: inline-block;
-    white-space: normal;
-    width: 33%;
-    text-align: center;
+.game-info {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.game-info > div {
+    width: 300px;
+    margin: 10px;
 }
 
 .grid-container {
@@ -18,7 +22,6 @@ html, body {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 75px 75px 75px 75px 75px;
     gap: 20px;
-    text-align: center;
 }
 
 .grid-container > div {
@@ -30,23 +33,24 @@ html, body {
 }
 
 .headstyle {
-    text-align: center;
     font-size: 40px;
     color: rgb(255, 136, 0);
 }
 
 .team {
-    text-align: center;
-    margin: auto;
     border: 1px solid black;
     border-radius: 10px;
     background-color: red;
 }
 
+#timer {
+    font-size: 30px;
+}
+
 #spymaster-button {
-    border: 1px solid black;
+    cursor: pointer;
+    border: 1px solid white;
     border-radius: 10px;
-    text-align: center;
     width: 10%;
     margin: auto;
     height: 45px;

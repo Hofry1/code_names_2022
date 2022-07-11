@@ -10,25 +10,54 @@ function init() {
 function cardClick(evt) {
     if (activeSpymaster == 1)
         return;
-    if (playingTeam == "r") {
+    if (cards[evt.target.id].classList[1] != "shown") {
         clearInterval(myInterval);
         startTimer(10, display);
+        if (playingTeam == "r") {
+            if (colorBoard[evt.target.id] == "r") {
+                cards[evt.target.id].classList.add("shown");
+                redNum--;
+                redScore.innerHTML = `Осталось красных: ${redNum}`;
+                if (redNum == 0)
+                    endGame("r");
+                return;
+            }
+            if (colorBoard[evt.target.id] == "b") {
+                cards[evt.target.id].classList.add("shown");
+                blueNum--;
+                blueScore.innerHTML = `Осталось синих: ${blueNum}`;
+                if (blueNum == 0) {
+                    endGame("b");
+                }
+                flipTurn();
+                return;
+            }
+            if (colorBoard[evt.target.id] == "n") {
+                cards[evt.target.id].classList.add("shown");
+                flipTurn();
+                return;
+            }
+            if (colorBoard[evt.target.id] == "a") {
+                cards[evt.target.id].classList.add("shown");
+                endGame("b");
+                return;
+            }
+        }
         if (colorBoard[evt.target.id] == "r") {
             cards[evt.target.id].classList.add("shown");
             redNum--;
             redScore.innerHTML = `Осталось красных: ${redNum}`;
             if (redNum == 0)
                 endGame("r");
+            flipTurn();
             return;
         }
         if (colorBoard[evt.target.id] == "b") {
             cards[evt.target.id].classList.add("shown");
             blueNum--;
             blueScore.innerHTML = `Осталось синих: ${blueNum}`;
-            if (blueNum == 0) {
+            if (blueNum == 0)
                 endGame("b");
-            }
-            flipTurn();
             return;
         }
         if (colorBoard[evt.target.id] == "n") {
@@ -38,40 +67,9 @@ function cardClick(evt) {
         }
         if (colorBoard[evt.target.id] == "a") {
             cards[evt.target.id].classList.add("shown");
-            endGame("b");
-            return;
+            endGame("r");
         }
     }
-    clearInterval(myInterval);
-    startTimer(10, display);
-    if (colorBoard[evt.target.id] == "r") {
-        cards[evt.target.id].classList.add("shown");
-        redNum--;
-        redScore.innerHTML = `Осталось красных: ${redNum}`;
-        if (redNum == 0)
-            endGame("r");
-        flipTurn();
-        return;
-    }
-    if (colorBoard[evt.target.id] == "b") {
-        cards[evt.target.id].classList.add("shown");
-        blueNum--;
-        blueScore.innerHTML = `Осталось синих: ${blueNum}`;
-        if (blueNum == 0)
-            endGame("b");
-        return;
-    }
-    if (colorBoard[evt.target.id] == "n") {
-        cards[evt.target.id].classList.add("shown");
-        flipTurn();
-        return;
-    }
-    if (colorBoard[evt.target.id] == "a") {
-        cards[evt.target.id].classList.add("shown");
-        endGame("r");
-        return;
-    }
-    return;
 }
 
 function showSpymaster() {
@@ -79,13 +77,13 @@ function showSpymaster() {
         spymaster.innerHTML = "Показать игровую доску";
         activeSpymaster = 1;
         for (let i = 0; i < cardsNum; i++)
-            cards[i].classList.add("spymaster");
+            cards[i].classList.toggle("spymaster");
         return;
     }
     spymaster.innerHTML = "Доска спаймастера";
     activeSpymaster = 0;
     for (let i = 0; i < cardsNum; i++)
-        cards[i].classList.remove("spymaster");
+        cards[i].classList.toggle("spymaster");
 }
 
 function newGame() {
