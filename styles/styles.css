@@ -51,7 +51,7 @@ html, body {
     height: 45px;
 }
 
-.n {
+.n.spymaster {
     background: yellow;
 }
 
@@ -77,4 +77,8 @@ html, body {
 
 .a.shown {
     background: black !important;
+}
+
+.n.shown {
+    background: yellow;
 }

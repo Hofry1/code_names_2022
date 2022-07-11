@@ -2,6 +2,7 @@ function init() {
     for (let i = 0; i < cardsNum; i++) {
         cards[i].innerHTML = wordBoard[i];
         cards[i].classList.add(colorBoard[i]);
+        cards[i].onclick = cardClick;
     }
 }
 
@@ -12,10 +13,20 @@ function cardClick(evt) {
     if (playingTeam == "r") {
         if (colorBoard[evt.target.id] == "r") {
             cards[evt.target.id].classList.add("shown");
+            redNum--;
+            redScore.innerHTML = `Осталось красных: ${redNum}`;
+            if (redNum == 0) {
+                endGame("r");
+            }
             return;
         }
         if (colorBoard[evt.target.id] == "b") {
             cards[evt.target.id].classList.add("shown");
+            blueNum--;
+            blueScore.innerHTML = `Осталось синих: ${blueNum}`;
+            if (blueNum == 0) {
+                endGame("b");
+            }
             flipTurn();
             return;
         }
@@ -26,17 +37,27 @@ function cardClick(evt) {
         }
         if (colorBoard[evt.target.id] == "a") {
             cards[evt.target.id].classList.add("shown");
-            endGame();
+            endGame("b");
             return;
         }
     }
     if (colorBoard[evt.target.id] == "r") {
         cards[evt.target.id].classList.add("shown");
+        redNum--;
+        redScore.innerHTML = `Осталось красных: ${redNum}`;
+        if (redNum == 0) {
+            endGame("r");
+        }
         flipTurn();
         return;
     }
     if (colorBoard[evt.target.id] == "b") {
         cards[evt.target.id].classList.add("shown");
+        blueNum--;
+        blueScore.innerHTML = `Осталось синих: ${blueNum}`;
+        if (blueNum == 0) {
+            endGame("b");
+        }
         return;
     }
     if (colorBoard[evt.target.id] == "n") {
@@ -46,7 +67,7 @@ function cardClick(evt) {
     }
     if (colorBoard[evt.target.id] == "a") {
         cards[evt.target.id].classList.add("shown");
-        endGame();
+        endGame("r");
         return;
     }
     return;
@@ -68,20 +89,15 @@ function showSpymaster() {
     }
 }
 
-function colorsAssignment() {
-
-}
-
-function wordsAssignment() {
-
-}
-
 function newGame() {
     
 }
 
-function endGame() {
-    
+function endGame(winner) {
+    for (let i = 0; i < cardsNum; i++) {
+        cards[i].onclick = "";
+        teamTurn.innerHTML = `Победитель: ${winner == "r" ? "Красные" : "Синие"}`
+    }
 }
 
 function flipTurn() {
@@ -96,8 +112,8 @@ function flipTurn() {
     team.style.background = "red";
 }
 
-let colorBoard = ["r", "r", "r", "r", "n", "r", "a", "r", "r", "r", "b", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r"]
-let wordBoard = ["hi", "", "", "", "", "", "", "", "", "hi", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+const colorBoard = ["r", "r", "b", "r", "n", "r", "a", "r", "r", "r", "b", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r"];
+const wordBoard = ["hi", "", "", "asdf", "", "", "", "", "", "hi", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 
 let activeSpymaster = 0;
 const cardsNum = 25;
@@ -112,9 +128,5 @@ const teamTurn = document.getElementById("team-turn");
 const redScore = document.getElementById("red-score");
 const blueScore = document.getElementById("blue-score");
 spymaster.addEventListener('click', showSpymaster);
-
-for (let i = 0; i < cardsNum; i++) {
-    cards[i].onclick = cardClick;
-}
 
 init();
